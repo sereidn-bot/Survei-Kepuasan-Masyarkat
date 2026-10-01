@@ -80,5 +80,15 @@
     </div>
   </div>
 </main>
+<script>
+function sendHeight(){
+  var h = document.body.getBoundingClientRect().bottom + window.scrollY;
+  window.parent.postMessage({ ppidFrameHeight: Math.ceil(h) }, '*');
+}
+window.addEventListener('load', sendHeight);
+window.addEventListener('resize', sendHeight);
+setTimeout(sendHeight, 300);
+setTimeout(sendHeight, 1000);
+</script>
 </body>
 </html>
